@@ -1,0 +1,36 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+ public static int findMax(int arr[], int k) {
+ 	//Declare a variable and assigned value 0
+     int maxSum = 0;
+ 	 //Traverse an array from 0 to n-k
+     for(int i = 0; i <= arr.length-k; i++) { //{-1 5 2 -3} : 0123 
+		  int sum = 0;
+ 
+          //Run a loop from i to i+k
+          for(int j = i; j < i+k; j++) {
+               sum = sum + arr[j];
+          }
+ 
+          //Keep track of maximum sum
+           maxSum = Math.max(sum, maxSum);
+      }
+ 
+      return maxSum;
+ }
+	public static void main (String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int N= sc.nextInt();
+		int k = sc.nextInt();
+		int[] arr = new int[N];
+		for( int i=0;i<N;i++){
+			arr[i]=sc.nextInt();
+		}
+        int result = findMax(arr, k);
+        System.out.println(result);
+	}
+}

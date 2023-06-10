@@ -1,0 +1,29 @@
+/*
+class Node
+{
+   char data;
+   Node next, prev;
+};
+*/
+ static boolean isPalin( Node left)
+    {
+         Node prev = null, next = null, curr = left;
+    //<-1<-2<- || 3->2->1
+    //curr = null, prev = (3,), next = null
+    while(curr != null){
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;
+    }
+       while(left != null && prev != null){
+           if(left.data == prev.data){
+               left = left.next;
+               prev = prev.next;
+           }else{
+               return false;
+           }
+       }
+           return true;
+       
+    }

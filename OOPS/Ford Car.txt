@@ -1,0 +1,55 @@
+/*
+class Car{
+    private String name;
+    private double currentSpeed;
+    Car(String name,double speed){
+        this.name=name;
+        this.currentSpeed=speed;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public void setCurrentSpeed(double currentSpeed) {
+        this.currentSpeed = currentSpeed;
+    }
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+    public void print(){
+        System.out.println(this.name + " is moving at speed of "+this.currentSpeed + "Kph");
+    }
+}
+*/
+
+//Implement ford class here which inherits Car class
+
+class Ford extends Car{
+    private String model;
+    Ford(String name, double speed, String model){
+        super(name, speed);
+        this.model = model;
+    }
+
+    public void startEngine(){
+        System.out.println(super.getName()+" is started!!");
+    }
+
+    public void accelerate(){
+        System.out.println(super.getName()+" is accelerating!!");
+    }
+
+    public void brake(){
+        System.out.println("Brake is applied on "+ 
+                super.getName()+", stopped successfully!!");
+    }
+
+    
+    public void print(){
+        System.out.println(super.getName() + " " + this.model+
+                " is moving at speed of "+super.getCurrentSpeed()+"Kph");
+    }
+
+}

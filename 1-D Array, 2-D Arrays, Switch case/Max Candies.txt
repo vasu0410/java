@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+class Main {
+    public static void fill(int [] prefixSum, int [] suffixSum, int [] a1, int [] a2, int n) {
+        for (int k=0; k<n; k++) {
+            if (k==0) {
+                prefixSum[0] = a1[0];
+            }
+            else {
+                prefixSum[k] = prefixSum[k-1]+a1[k];
+            }
+        }
+        int a = n-1;
+        int g = a;
+        while (g>=0) {
+            if (g == a) {
+                suffixSum[a] = a2[a];
+            }
+            else {
+                suffixSum[g] = suffixSum[g+1] +a2[g];
+            }
+            g--;
+        }
+        int b = Integer.MIN_VALUE;
+        for (int m = n-1; m>=0; m--) {
+            int x = prefixSum[m] +suffixSum[m];
+            if (x > b) {
+                b = x;
+            }
+        }
+        System.out.println(b);
+    }
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int [] a1 = new int[n];
+        int [] a2 = new int[n];
+        int [] prefixSum = new int[n];
+        int [] suffixSum = new int[n];
+        for(int i=0; i<n; i++) {
+            a1 [i] = sc.nextInt();
+        }
+        for (int j=0; j<n; j++) {
+            a2 [j] = sc.nextInt();
+        }
+        fill(prefixSum, suffixSum, a1, a2, n);
+    }
+}

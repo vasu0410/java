@@ -1,0 +1,72 @@
+/*
+class Node {
+    Node next;
+    int val;
+
+    Node(int val) {
+        this.val = val;
+        next = null;
+    }
+}
+*/
+/*
+below function is used to insert nodes in the linked list
+//Inefficient process
+public static Node insert111(Node head, int val) {
+        if(head == null) {
+            return new Node(val);
+        } else {
+            Node cur;
+            cur = insert111(head.next, val);
+            head.next = cur;
+            return head;
+        }
+    }
+
+*/
+
+static Node result = null, end = null;
+public static void insertNewNodeLast(int data){ //data = 5
+    Node newnode = new Node(data); //default constructor
+    //paramaterized constructor
+    /*
+        result = (3, Node@newnode) || (4, Node@newnode) || end = (5, null)
+    */
+    if(result == null){
+        //first time insert
+        result = newnode;
+        end = newnode;
+    }
+    else{
+        end.next = newnode;
+        end = newnode;
+    }
+}
+public static Node Merge (Node head1, Node head2){
+    Node temp1 = head1;
+    Node temp2 = head2;
+    result = null;
+    end = null;
+    //no codes in linked list so assigning null
+    while(temp1 != null && temp2 != null){
+        if(temp1.val < temp2.val){
+            insertNewNodeLast(temp1.val);
+            temp1 = temp1.next;
+        }
+        else{
+            insertNewNodeLast(temp2.val);
+            temp2 = temp2.next;
+        }
+    }
+
+    while(temp1 != null){
+        insertNewNodeLast(temp1.val);
+        temp1 = temp1.next;
+    }
+
+    while(temp2 != null){
+        insertNewNodeLast(temp2.val);
+        temp2 = temp2.next;        
+    }
+    return result;
+}

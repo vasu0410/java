@@ -1,0 +1,43 @@
+/*
+
+class Node {
+    Node next;
+    Node prev;
+    int val;
+
+    Node(int val) {
+        this.val = val;
+        next = null;
+        prev = null;
+    }
+}
+*/
+public static Node deleteElement(Node head, int k) {
+    if(head == null){
+        return null;   
+    }
+
+    Node t1 = head;
+    Node t2 = head;
+    for(int i = 0; i < k; i++){
+        t2 = t2.next;
+    }
+    if(t2 == null){
+        //deletion of first node
+        if(head.next != null)
+            head.next.prev = null;
+        return head.next;
+    }
+    while(t2.next != null){
+        t1 = t1.next;
+        t2 = t2.next;
+    }
+
+    //t2 is at the last position
+    //t1 is just one node before deleting node;
+    Node newnext = t1.next.next;
+    t1.next = newnext;
+    if(newnext != null)
+        newnext.prev = t1;
+    return head;
+}

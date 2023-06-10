@@ -1,0 +1,37 @@
+/*
+class Node
+{
+   int data;
+   Node next, prev;
+};
+*/
+static Node sortedInsertion(Node head, Node newNode)
+{
+    if(head == null){
+        return newNode;
+    }
+    //1<->2<->3<->4<->6, newNode = 0
+    if(newNode.data <= head.data){
+        //insertion at first position
+        newNode.next = head;
+        head.prev = newNode;
+        return newNode;
+    }
+    Node temp = head;
+    //1<->2<->3<->4<->6<->8, newNode = 5
+    while(temp.next != null && temp.next.data < newNode.data){
+        temp = temp.next;
+    }
+    if(temp.next == null){
+        //insertion at last position
+        newNode.prev = temp;
+        temp.next = newNode;
+        return head;
+    }
+    //1<->2<->3<->4<->5<->6, newNode = 5, temp = 4
+    newNode.next = temp.next;
+    temp.next.prev = newNode;
+    newNode.prev = temp;
+    temp.next = newNode;
+    return head;
+}

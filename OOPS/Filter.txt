@@ -1,0 +1,46 @@
+// implement Filter class here
+class Filter{
+    String filter(String str, char ch){
+        String response = "";
+        //str = aab, ch = a, response = b
+        for(int i = 0; i < str.length(); i++){
+            if(str.charAt(i) != ch){
+                response += str.charAt(i);
+            }
+        }
+        return response;
+    }
+
+    int[] filter(int[] arr, int element){
+        //[5,5,3] element = 5 => [3]
+        List<Integer> list = new ArrayList<Integer>();
+        int n = arr.length;
+        for(int i = 0; i < n; i++){
+            if(arr[i] != element){
+                list.add(arr[i]);
+            }
+        }
+        int size = list.size();
+        int[] result = new int[size];
+        //5 5 3 2, element = 5, size = 2, result = [3, 2]
+        for(int i = 0; i < size; i++){
+            result[i] = list.get(i);
+        }        
+        return result;
+    }
+
+    char[] filter(char[] charArray, char ch){
+        String str = String.valueOf(charArray);
+        String response = this.filter(str, ch);
+        return response.toCharArray();
+    }
+
+    //s1 = cdddccbaaa , s2 = ab 
+    String filter(String str1, String str2){
+        if(str1.indexOf(str2) == -1){
+            return str1;
+        }
+        str1 = str1.replace(str2, "");
+        return filter(str1, str2);
+    }
+}

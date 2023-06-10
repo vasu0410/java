@@ -1,0 +1,36 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static int binarySearch(long K){
+        long l=0;
+        long t=(int)Math. sqrt(K);//5
+        long r= t;
+        // System.out.println(r);
+       // int eqtn= (x*x)+(3*x);
+       // 1 2 3 4 5 
+        while(l<r){
+		long x=l+(r-l)/2;
+		if((x*x)+(3*x)==K){
+			return (int) x;
+		}
+		else if((x*x)+(3*x)<K){
+			l=x+1;
+		}
+		else{
+			r=x-1;
+		}
+	}
+        return -1;
+    }
+    public static void main (String[] args) {
+        Scanner sc=new Scanner(System.in);
+        long K= sc.nextLong();
+        long z= binarySearch(K);
+        System.out.println(z);
+        
+
+    }
+}

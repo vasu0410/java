@@ -1,0 +1,21 @@
+public static ArrayList<Integer> threeWayPartition(ArrayList<Integer> arr, int lowVal, int highVal)
+{
+	ArrayList<Integer> solution = new ArrayList<Integer>();
+	for(int i = 0; i < arr.size(); i++){
+		if(arr.get(i) < lowVal){
+			solution.add(arr.get(i));
+		}
+	}
+	for(int i = 0; i < arr.size(); i++){
+		if(arr.get(i) >= lowVal && arr.get(i) <= highVal){
+			solution.add(arr.get(i));
+		}
+	}
+	for(int i = 0; i < arr.size(); i++){
+		if(arr.get(i) > highVal){
+			solution.add(arr.get(i));
+		}
+	}
+
+	return solution;
+}

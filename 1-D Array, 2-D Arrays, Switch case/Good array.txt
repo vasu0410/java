@@ -1,0 +1,36 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+					   static boolean check(int arr[], int n){
+ 							// check for odd
+								if (n % 2 == 1)
+									return false;
+							
+							// check if the opposite element is same
+									// as a[i]
+									for (int i = 0; i < n / 2; i++) {
+										if (arr[i] != arr[i + (n / 2)])
+										return false;
+									}
+								
+									return true;
+					   }
+					   public static void main (String[] args) {
+					  	Scanner sc= new Scanner (System.in);
+						  int x=sc.nextInt();
+						  int [] arr= new int [x];
+						  for (int i=0;i<x;i++){
+							  arr[i]=sc.nextInt();
+						  }
+						  int n = arr.length;
+								if (check(arr, x)){
+									System.out.println("Yes");
+								}else{
+									System.out.println("No");
+							}
+						 
+   }
+}

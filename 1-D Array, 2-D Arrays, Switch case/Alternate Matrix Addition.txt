@@ -1,0 +1,48 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+// class Main {
+   
+//     public static void main (String[] rgs) {
+//         Scanner sc = new Scanner(System.in);
+//         int n = sc.nextInt();
+//         int[][] arr = new int[n][n];
+//         int whitSum = 0;
+//         int blackSum = 0;
+//         for (int i = 0; i < n; i++) {
+//             for (int j = 0; j < n; j++) {
+//                 arr[i][j] = sc.nextInt();
+//                 if ((i+j)%2==0){
+//                     whitSum+=arr[i][j];
+//                 }else {
+//                     blackSum += arr[i][j];
+//                 }
+//             }
+//         }
+//         System.out.println(whitSum);
+//         System.out.println(blackSum);
+//     }
+// }
+class Main {
+    public static void main (String[] args)throws IOException  {
+        Scanner sc = new Scanner(System.in);
+        int n = Integer.parseInt(sc.nextLine().strip());
+        int blackSum=0;
+        int whiteSum=0;
+        for (int i = 0; i < n; i++) {
+        String[] line = sc.nextLine().strip().split(" ");
+          for (int j = 0; j < n; j++) {
+          int c = Integer.parseInt(line[j]);
+          if((i+j)%2==0){
+              blackSum+= c;
+          }else{
+              whiteSum+=c;
+          }
+          }
+        }
+         System.out.println(blackSum);
+          System.out.println(whiteSum);
+    }
+}

@@ -1,0 +1,32 @@
+/*
+class Node {
+    Node next;
+    int data;
+
+    Node(int data) {
+        this.data = data;
+        next = null;
+    }
+}
+*/
+
+static Node addOne(Node head){
+    Node current = head;
+    Node prev = null;
+    int carry = 1;
+    while(current != null && carry > 0){
+        int sum = current.data + carry;
+        current.data = sum % 10;
+        carry = (sum >= 10) ? 1 : 0;
+        /*ternary operator: 
+        contidion ? if condition is true : if condition is false */
+        prev = current;
+        current = current.next;
+    }
+    if(carry > 0){
+        //current == null
+        Node newnode = new Node(carry);
+        prev.next = newnode;
+    }
+    return head;
+}
